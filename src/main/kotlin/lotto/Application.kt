@@ -1,5 +1,12 @@
 package lotto
 
+import lotto.game.LottoGame
+import lotto.model.Lotto
+import lotto.view.InputView
+import lotto.view.OutputView
+
 fun main() {
-    TODO("프로그램 구현")
+
+    val lottoGame = LottoGame(inputView = InputView(), outputView = OutputView())
+    lottoGame.play()
 }
