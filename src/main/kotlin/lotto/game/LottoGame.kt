@@ -11,6 +11,8 @@ class LottoGame(
     private val outputView: OutputView,
     private val lottoMaker: LottoMaker,
 ) : Game {
+    private val money = inputView.createMoney()
+    private val lotteries = lottoMaker.makeLotto(money)
 
     override fun play() {
         println("로또 게임을 시작 합니다.")
@@ -18,11 +20,15 @@ class LottoGame(
     }
 
     override fun process() {
-        val money = inputView.createMoney()
-        val lotteries = lottoMaker.makeLotto(money)
-        outputView.printLotto(lotteries)
-        val winningNumber = inputView.createWinningNumber()
-        val lotto = Lotto(winningNumber)
+        outputLotto()
+        outputResult()
+    }
+
+    private fun outputLotto() = outputView.printLotto(lotteries)
+
+    private fun outputResult() {
+        val lotto = Lotto(inputView.createWinningNumber())
+
         outputView.printResult(
             lotto.createMatchCountList(
                 lotteriesMap = lotteries,
