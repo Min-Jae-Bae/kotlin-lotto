@@ -1,8 +1,8 @@
 package lotto.game
 
 import lotto.game.service.Game
+import lotto.model.Lotto
 import lotto.model.generator.LottoMaker
-import lotto.model.processor.ReturnTotalProcessor
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -20,14 +20,15 @@ class LottoGame(
     override fun process() {
         try {
             val money = inputView.createMoney()
-            val makeLotto = lottoMaker.makeLotto(money)
-            outputView.printLotto(makeLotto)
+            val lotteries = lottoMaker.makeLotto(money)
+            outputView.printLotto(lotteries)
+            val winningNumber = inputView.createWinningNumber()
+            val lotto = Lotto(winningNumber)
             outputView.printResult(
-                ReturnTotalProcessor.createMatchCountList(
-                    makeLotto,
-                    winningNumber = inputView.createWinningNumber(),
+                lotto.createMatchCountList(
+                    lotteriesMap = lotteries,
                     bonusNumber = inputView.createBonusNumber()),
-                ReturnTotalProcessor.createTotalReturn(money))
+                lotto.createTotalReturn(money))
         } catch (e: NumberFormatException) {
             println("[ERROR]")
         }
