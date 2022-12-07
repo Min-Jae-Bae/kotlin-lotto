@@ -1,3 +1,4 @@
+![LottoClassDiagram](../docs/LottoDiagram-0.png)
 ## 기능 목록
 
 1. 로또 구입 금액을 입력 받는 기능
