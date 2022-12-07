@@ -1,13 +1,12 @@
 package lotto.view
 
+import lotto.view.validator.InputValidator
+
 class InputView {
 
     // 금액 입력
     fun createMoney(): Int {
-        println("구입 금액을 입력해 주세요.")
-        val money = readLine()!!.toInt()
-        require(money % 1000 == 0)
-        return money
+        return InputValidator.validateInvalidMoney()
     }
 
     // 당첨 번호 입력

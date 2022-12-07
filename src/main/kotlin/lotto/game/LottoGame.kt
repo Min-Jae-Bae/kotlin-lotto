@@ -9,7 +9,7 @@ import lotto.view.OutputView
 class LottoGame(
     private val inputView: InputView,
     private val outputView: OutputView,
-    private val lottoMaker: LottoMaker
+    private val lottoMaker: LottoMaker,
 ) : Game {
 
     override fun play() {
@@ -18,19 +18,15 @@ class LottoGame(
     }
 
     override fun process() {
-        try {
-            val money = inputView.createMoney()
-            val lotteries = lottoMaker.makeLotto(money)
-            outputView.printLotto(lotteries)
-            val winningNumber = inputView.createWinningNumber()
-            val lotto = Lotto(winningNumber)
-            outputView.printResult(
-                lotto.createMatchCountList(
-                    lotteriesMap = lotteries,
-                    bonusNumber = inputView.createBonusNumber()),
-                lotto.createTotalReturn(money))
-        } catch (e: NumberFormatException) {
-            println("[ERROR]")
-        }
+        val money = inputView.createMoney()
+        val lotteries = lottoMaker.makeLotto(money)
+        outputView.printLotto(lotteries)
+        val winningNumber = inputView.createWinningNumber()
+        val lotto = Lotto(winningNumber)
+        outputView.printResult(
+            lotto.createMatchCountList(
+                lotteriesMap = lotteries,
+                bonusNumber = inputView.createBonusNumber()),
+            lotto.createTotalReturn(money))
     }
 }
