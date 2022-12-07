@@ -1,23 +1,17 @@
-package lotto.model
+package lotto.model.processor
 
-import camp.nextstep.edu.missionutils.Randoms
 import lotto.util.Rank
 
 object ReturnTotalProcessor {
-    private val lotteriesMap: HashMap<Int, List<Int>> = HashMap()
     private val matchCountList: MutableList<Int> = mutableListOf()
     private val winningMap: HashMap<Rank, Int> = HashMap()
 
-    fun createLotteries(money: Int): HashMap<Int, List<Int>> {
-        val lotteriesCount = money / 1000
-        repeat(lotteriesCount) { index ->
-            val numberList = Randoms.pickUniqueNumbersInRange(1, 45, 6)
-            lotteriesMap[index] = numberList.sorted()
-        }
-        return lotteriesMap
-    }
 
-    fun createMatchCountList(winningNumber: List<Int>, bonusNumber: Int): HashMap<Rank, Int> {
+    fun createMatchCountList(
+        lotteriesMap: HashMap<Int, List<Int>>,
+        winningNumber: List<Int>,
+        bonusNumber: Int,
+    ): HashMap<Rank, Int> {
         lotteriesMap.forEach { (_, lotteries) ->
             var count = 0
             repeat(lotteries.size) { index ->
@@ -46,7 +40,7 @@ object ReturnTotalProcessor {
                 Rank.FOURTH -> Rank.FOURTH.money * entry.value
                 Rank.THIRD -> Rank.THIRD.money * entry.value
                 Rank.SECOND -> Rank.SECOND.money * entry.value
-                else -> Rank.FIRST.money * entry.value
+                Rank.FIRST -> Rank.FIRST.money * entry.value
             }
         }.sum()
     }

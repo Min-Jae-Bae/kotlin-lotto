@@ -1,15 +1,15 @@
 package lotto.game
 
-import camp.nextstep.edu.missionutils.Randoms
 import lotto.game.service.Game
-import lotto.model.Lotto
-import lotto.model.ReturnTotalProcessor
+import lotto.model.generator.LottoMaker
+import lotto.model.processor.ReturnTotalProcessor
 import lotto.view.InputView
 import lotto.view.OutputView
 
 class LottoGame(
     private val inputView: InputView,
     private val outputView: OutputView,
+    private val lottoMaker: LottoMaker
 ) : Game {
 
     override fun play() {
@@ -20,14 +20,14 @@ class LottoGame(
     override fun process() {
         try {
             val money = inputView.createMoney()
-            outputView.printLotto(ReturnTotalProcessor.createLotteries(money))
-            val winningNumber = inputView.createWinningNumber()
-            val bonusNumber = inputView.createBonusNumber()
+            val makeLotto = lottoMaker.makeLotto(money)
+            outputView.printLotto(makeLotto)
             outputView.printResult(
-                ReturnTotalProcessor.createMatchCountList(winningNumber = winningNumber,
-                    bonusNumber = bonusNumber),
-                ReturnTotalProcessor.createTotalReturn(money)
-            )
+                ReturnTotalProcessor.createMatchCountList(
+                    makeLotto,
+                    winningNumber = inputView.createWinningNumber(),
+                    bonusNumber = inputView.createBonusNumber()),
+                ReturnTotalProcessor.createTotalReturn(money))
         } catch (e: NumberFormatException) {
             println("[ERROR]")
         }
