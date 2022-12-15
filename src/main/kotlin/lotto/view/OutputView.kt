@@ -3,6 +3,7 @@ package lotto.view
 import lotto.util.PRINT_PURCHASE_LOTTERIES_MESSAGE
 import lotto.util.RETURN_TOTAL_MESSAGE
 import lotto.util.Rank
+import lotto.util.WINNING_STATICS_OUTPUT_MESSAGE
 
 class OutputView {
 
@@ -13,7 +14,7 @@ class OutputView {
 
     // 결과 출력
     fun printResult(winningList: HashMap<Rank, Int>, returnTotal: Double) {
-        println("당첨 통계\n---")
+        println(WINNING_STATICS_OUTPUT_MESSAGE)
         println(Rank.FIFTH.message.format(winningList[Rank.FIFTH]))
         println(Rank.FOURTH.message.format(winningList[Rank.FOURTH]))
         println(Rank.THIRD.message.format(winningList[Rank.THIRD]))

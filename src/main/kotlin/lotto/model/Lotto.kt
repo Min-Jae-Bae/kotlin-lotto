@@ -1,5 +1,6 @@
 package lotto.model
 
+import lotto.util.PERCENTAGE
 import lotto.util.Rank
 
 class Lotto(private val numbers: List<Int>) {
@@ -48,6 +49,6 @@ class Lotto(private val numbers: List<Int>) {
 
     fun createTotalReturn(purchase: Int): Double {
         val rewardTotal = updateTotalReturn()
-        return (rewardTotal / (purchase).toDouble()) * 100
+        return (rewardTotal / (purchase).toDouble()) * PERCENTAGE
     }
 }

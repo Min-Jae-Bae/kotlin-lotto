@@ -1,5 +1,8 @@
 package lotto.view
 
+import lotto.util.COMMA_STRING
+import lotto.util.ENTER_BONUS_NUMBER_MESSAGE
+import lotto.util.ENTER_WINNING_NUMBER_MESSAGE
 import lotto.view.validator.InputValidator
 
 class InputView {
@@ -11,14 +14,14 @@ class InputView {
 
     // 당첨 번호 입력
     fun createWinningNumber(): List<Int> {
-        println("당첨 번호를 입력해 주세요.")
-        val winningNumber = readLine()!!.split(",")
+        println(ENTER_WINNING_NUMBER_MESSAGE)
+        val winningNumber = readLine()!!.split(COMMA_STRING)
         return winningNumber.map { number -> number.toInt() }
     }
 
     // 보너스 번호 입력
     fun createBonusNumber(): Int {
-        println("보너스 번호를 입력해 주세요.")
+        println(ENTER_BONUS_NUMBER_MESSAGE)
         val bonusNumber = readLine()!!
         return bonusNumber.toInt()
     }

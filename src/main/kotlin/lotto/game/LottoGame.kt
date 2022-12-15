@@ -3,6 +3,7 @@ package lotto.game
 import lotto.game.service.Game
 import lotto.model.Lotto
 import lotto.model.generator.LottoMaker
+import lotto.util.GAME_START_MESSAGE
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -15,7 +16,7 @@ class LottoGame(
     private val lotteries = lottoMaker.makeLotto(money)
 
     override fun play() {
-        println("로또 게임을 시작 합니다.")
+        println(GAME_START_MESSAGE)
         process()
     }
 
