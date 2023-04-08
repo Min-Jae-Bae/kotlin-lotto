@@ -4,7 +4,6 @@
 # 관심사의 분리, 단일 책임 원칙
 ![로또게임 모델](https://user-images.githubusercontent.com/70472417/230722751-55376b2b-8a3d-45f8-b08d-5ec6fc1033ba.jpg)
 ![로또게임 모델2](https://user-images.githubusercontent.com/70472417/230722815-41ea60d3-f668-4443-a4d9-52d1ea6fb38c.jpg)
-![로또게임 모델3](https://user-images.githubusercontent.com/70472417/230722819-9a54a157-1164-4215-b7a4-04ccc5c9a3e4.jpg)
 
 
 ## 기능 목록
