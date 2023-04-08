@@ -1,4 +1,9 @@
+# 클래스 다이어그램
 ![LottoClassDiagram](../docs/LottoDiagram-0.png)
+
+# 관심사의 분리, 단일 책임 원칙
+![로또게임 모델](https://user-images.githubusercontent.com/70472417/230722751-55376b2b-8a3d-45f8-b08d-5ec6fc1033ba.jpg)
+
 ## 기능 목록
 
 1. 로또 구입 금액을 입력 받는 기능
