@@ -1,5 +1,17 @@
 package lotto
 
+import lotto.game.LottoGame
+import lotto.model.generator.LottoMaker
+import lotto.model.generator.LottoRandomListGenerator
+import lotto.view.InputView
+import lotto.view.OutputView
+
 fun main() {
-    TODO("프로그램 구현")
+    val lottoMaker = LottoMaker(LottoRandomListGenerator())
+    val lottoGame = LottoGame(
+        inputView = InputView(),
+        outputView = OutputView(),
+        lottoMaker = lottoMaker
+    )
+    lottoGame.play()
 }
